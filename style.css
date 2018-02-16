@@ -1,7 +1,9 @@
-body{
+body {
     background-color: grey;
 }
-.test{
+
+.test {
     width: 200px;
     padding: 10px;
+
 }
