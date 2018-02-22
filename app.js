@@ -1,25 +1,44 @@
-/*jslint devel: true*/
+/*jslint devel: true */
 /*global $, jQuery, alert*/
-/*jslint indent: 2*/
+/*jslint indent: 2 */
 
 
+// minden ami ebben a blokkban van az strict mode-ban lesz
+// a strict mode egy szigorubb mukodest eredmenyez, tobb esetben
+// fog hibat jelezni a bongeszo (es kevesebb lesz a nem vart munkodes)
+// read more: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
 (function () {
-  'use strict';
-  console.log("hello world");
-  $('.image-popup').magnificPopup({
-    type: 'image',
-      gallery: {
-          enabled: true
-      }
-  });
-}());
-//minden image-popup class-al rendelkező elemet elrejtünk
-//[].forEach.call(document.querySelectorAll('.image-popup'),
-//               function (el) {
-//    el.style.display = 'none' ;
-//});
+// strict mode bekapcsolasa:
+'use strict';
+
+// console-ra kiirjuk a hello word stringet
+console.log("hello world");
 
 
-//ez ugaynazt csinálja mint a fentebbi kód, csak ez a jquery library segitségével:
-$('.image-popup').css('display', 'none');
+// kivalasztunk minden html elemet amin rajta van az image popup class
+// es meghivjuk rá a magnific popup fugvenyt
+// a fugveny bemeneti parametere egy object
+// ami a popup beallitasait tartalmazza
+$('.image-popup').magnificPopup({
+  type: 'image',
+  gallery: {
+    enabled: true
+  }
+});
 
+
+
+// minden hidden-image class-al rendelkező elemet elrejtünk
+// sima javascriptet használunk ehhez:
+[].forEach.call(document.querySelectorAll('.hidden'),
+  function (el) {
+    el.style.display = 'none';
+});
+
+
+// ez ugyanazt csinálja mint a fentebbi kód, csak ez
+// a jquery library segítségével:
+$('.hidden').css('display', 'none');
+
+
+}()); // end of strict mode
